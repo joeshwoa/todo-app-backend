@@ -56,7 +56,7 @@ exports.deleteTask = async (req, res) => {
       return res.status(404).json({ msg: "Task not found" });
     }
 
-    await task.remove();
+    await Todo.findByIdAndDelete(taskId);
     res.json({ msg: "Task deleted" });
   } catch (error) {
     res.status(500).json({ error: "Server error" });
